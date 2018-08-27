@@ -1,0 +1,36 @@
+electron开发日记
+
+//开发要点
+{
+	1、展示层：无menu，
+	2、消息层：消息通知
+	3、操作层：快捷键
+}
+
+1、jquery和require中的require关键字和module等关键字的冲突问题
+	解决方案：【在require和jquery加载前删除关键字对象】
+		if(typeof require != 'undefined'){
+                window.NODEJS_OBJ = {
+                        require: require,
+                        process: process,
+                        module: module,
+                };
+
+                delete window.require;
+                delete window.process;
+                delete window.exports;
+                delete window.module;
+        }
+
+2、消息通知机制
+	//其他页面调用消息机制
+	let myNotification = new Notification('标题', {
+      body: '通知正文内容'
+    })
+    console.log(myNotification);
+    myNotification.onclick = () => {
+      console.log('通知被点击')
+    }
+
+3、快捷键定义
+	

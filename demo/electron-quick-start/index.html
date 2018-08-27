@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>jump</title>
+  </head>
+  <body>
+    <!-- All of the Node.js APIs are available in this renderer process. -->
+    <!-- We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>. -->
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script> -->
+    <!-- <script type="text/javascript">
+        let myNotification = new Notification('标题', {
+          body: '通知正文内容'
+        })
+        console.log(myNotification);
+        myNotification.onclick = () => {
+          console.log('通知被点击')
+        }
+    </script> -->
+    <script type="text/javascript">
+      function showDialog (str) {
+        console.log(str);
+        new Notification(str, {
+          body: '通知正文内容'
+        });
+      }
+    </script>
+    <script type="text/javascript">
+      window.addEventListener('keyup', function(e){
+        showDialog(e.key);
+      }, true)
+    </script>
+    <script>
+      // if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};
+      // window.location.href = 'http://t.10jqka.com.cn/newcircle/creation/index/?fid=18375&source=sns';
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
